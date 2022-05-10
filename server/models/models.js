@@ -10,6 +10,14 @@ const User = sequelize.define('user',{
     activationLink: {type: DataTypes.STRING}
 });
 
+const Token = sequelize.define('token',{
+    refreshToken: {type: DataTypes.STRING, require: true}
+});
+
+User.hasOne(Token);
+Token.belongsTo(User);
+
 module.exports = {
     User,
+    Token,
 };
